@@ -29,12 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Picture {
 	
-	@Override
-	public String toString() {
-		return "Picture [id=" + id + ", name=" + name + ", painter=" + painter + ", price=" + price + ", registDate="
-				+ registDate + ", shop=" + shop + "]";
-	}
-	@Id
+		@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer id;
@@ -50,11 +45,12 @@ public class Picture {
 	
 	@Column(name = "date", updatable = false, nullable = false)
     @Temporal(TemporalType.DATE)
-     private Date registDate;
+    private Date registDate;
 	
 	@JsonIgnore
 	@JoinColumn(name="fk_shop",nullable=false)
 	@ManyToOne(optional = false,cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+	//@ManyToOne(optional = false,cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private Shop shop;
 	
 
@@ -118,6 +114,11 @@ public class Picture {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Picture [id=" + id + ", name=" + name + ", painter=" + painter + ", price=" + price + ", registDate="
+				+ registDate + ", shop=" + shop + "]";
+	}
 
 
 

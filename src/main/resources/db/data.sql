@@ -1,4 +1,6 @@
 
+
+
 insert into shop(capacity,name)values(10,'prado');
 insert into shop(capacity,name)values(10,'Picasso');
 
